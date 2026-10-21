@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1" >
+    <title>Максим Бондаренко — дизайнер</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" >
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin >
+    <link       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    >
+    <style>
+*,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      body,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p,
+      ul,
+      ol,
+      figure,
+      blockquote {
+        margin: 0;
+        padding: 0;
+      }
+      ul,
+      ol {
+        list-style: none;
+      }
+      img,
+      video,
+      svg {
+        display: block;
+        max-width: 100%;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+      :root {
+        --color-bg: #111514;
+        --color-text: #f0f7f4;
+        --color-accent: #6fecb8;
+        --color-surface: #19201e;
+        --color-border: #33413c;
+        --color-muted: #a8b9b2;
+        --space-xs: 0.5rem;
+        --space-sm: 0.75rem;
+        --space-md: 1.25rem;
+        --space-lg: 2rem;
+        --space-xl: clamp(3.5rem, 9vw, 7rem);
+        --radius: 1rem;
+        --font-body: "Inter", sans-serif;
+        --font-heading: "Inter", sans-serif;
+        --z-header: 10;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      html,
+      body {
+        width: 100%;
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        overflow-x: hidden;
+        background: var(--color-bg);
+        color: var(--color-text);
+        font-family: var(--font-body);
+        font-size: 16px;
+        line-height: 1.6;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      button,
+      input,
+      textarea {
+        font: inherit;
+      }
+      button,
+      a {
+        -webkit-tap-highlight-color: transparent;
+      }
+      :focus-visible {
+        outline: 2px solid var(--color-accent);
+        outline-offset: 4px;
+      }
+      .container {
+        width: 100%;
+        max-width: 1180px;
+        margin-inline: auto;
+        padding-inline: clamp(1rem, 5vw, 2rem);
+      }
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: var(--z-header);
+        border-bottom: 1px solid var(--color-border);
+        background: rgba(17, 21, 20, 0.94);
+        backdrop-filter: blur(12px);
+      }
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 4.5rem;
+      }
+      .logo {
+        color: var(--color-accent);
+        font-size: 1.15rem;
+        font-weight: 700;
+        letter-spacing: -0.04em;
+      }
+      .nav {
+        display: none;
+        gap: var(--space-lg);
+        color: var(--color-muted);
+        font-size: 0.9rem;
+      }
+      .nav a,
+      .mobile-nav a {
+        transition: color 0.2s ease;
+      }
+      .nav a:hover,
+      .mobile-nav a:hover {
+        color: var(--color-accent);
+      }
+      .menu-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 44px;
+        min-height: 44px;
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius);
+        background: transparent;
+        color: var(--color-text);
+        cursor: pointer;
+      }
+      .menu-button svg {
+        width: 20px;
+        height: 20px;
+      }
+      .mobile-nav {
+        display: grid;
+        gap: 0.25rem;
+        padding: 0 1rem 1rem;
+      }
+      .mobile-nav[hidden] {
+        display: none;
+      }
+      .mobile-nav a {
+        padding: 0.7rem 0;
+        color: var(--color-muted);
+        border-bottom: 1px solid var(--color-border);
+      }
+      .hero {
+        padding-block: var(--space-xl);
+      }
+      .hero-grid {
+        display: grid;
+        gap: var(--space-xl);
+        align-items: center;
+      }
+      .eyebrow {
+        margin-bottom: var(--space-md);
+        color: var(--color-accent);
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: var(--font-heading);
+        letter-spacing: -0.05em;
+        line-height: 1.1;
+      }
+      h1 {
+        max-width: 800px;
+        font-size: clamp(2.7rem, 10vw, 5.7rem);
+        font-weight: 700;
+      }
+      h1 span {
+        color: var(--color-accent);
+      }
+      .hero-copy {
+        max-width: 620px;
+        margin-top: var(--space-lg);
+        color: var(--color-muted);
+        font-size: clamp(1rem, 2vw, 1.2rem);
+      }
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-sm);
+        margin-top: var(--space-lg);
+      }
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        padding: 0.75rem 1.2rem;
+        border: 1px solid var(--color-accent);
+        border-radius: 0.7rem;
+        background: var(--color-accent);
+        color: #102019;
+        font-weight: 700;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+      .button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 24px rgba(111, 236, 184, 0.24);
+      }
+      .button.secondary {
+        background: transparent;
+        color: var(--color-accent);
+      }
+      .hero-mark {
+        display: grid;
+        place-items: center;
+        min-height: 280px;
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius);
+        background:
+          radial-gradient(circle at 70% 20%, rgba(111, 236, 184, 0.16), transparent 34%),
+          var(--color-surface);
+      }
+      .mark-frame {
+        width: min(68vw, 250px);
+        aspect-ratio: 1;
+        display: grid;
+        place-items: center;
+        border: 1px solid var(--color-accent);
+        border-radius: 50%;
+        box-shadow: 0 0 42px rgba(111, 236, 184, 0.12);
+        color: var(--color-accent);
+        font-size: clamp(4rem, 15vw, 7rem);
+        font-weight: 700;
+        letter-spacing: -0.12em;
+      }
+      section {
+        padding-block: var(--space-xl);
+        border-top: 1px solid var(--color-border);
+      }
+      .section-heading {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: end;
+        justify-content: space-between;
+        gap: var(--space-md);
+        margin-bottom: var(--space-lg);
+      }
+      h2 {
+        font-size: clamp(2rem, 5vw, 3.4rem);
+      }
+      .section-intro {
+        max-width: 50ch;
+        color: var(--color-muted);
+      }
+      .about-grid,
+      .contact-grid {
+        display: grid;
+        gap: var(--space-lg);
+      }
+      .about-copy {
+        max-width: 64ch;
+        color: var(--color-muted);
+        font-size: 1.05rem;
+      }
+      .about-copy p + p {
+        margin-top: var(--space-md);
+      }
+      .availability {
+        align-self: start;
+        padding: var(--space-md);
+        border-left: 2px solid var(--color-accent);
+        background: var(--color-surface);
+        color: var(--color-text);
+      }
+      .availability strong {
+        display: block;
+        margin-bottom: var(--space-xs);
+        color: var(--color-accent);
+      }
+      .timeline {
+        display: grid;
+        gap: var(--space-md);
+      }
+      .timeline-item {
+        display: grid;
+        gap: var(--space-sm);
+        padding: var(--space-lg);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius);
+        background: var(--color-surface);
+      }
+      .timeline-date,
+      .project-number {
+        color: var(--color-accent);
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+      .timeline h3 {
+        font-size: 1.35rem;
+        letter-spacing: -0.03em;
+      }
+      .timeline p,
+      .project p {
+        color: var(--color-muted);
+      }
+      .skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-sm);
+      }
+      .skill {
+        padding: 0.65rem 0.85rem;
+        border: 1px solid var(--color-border);
+        border-radius: 0.65rem;
+        background: var(--color-surface);
+        color: var(--color-text);
+      }
+      .skill::before {
+        content: "↗";
+        margin-right: 0.5rem;
+        color: var(--color-accent);
+      }
+      .projects {
+        display: grid;
+        gap: var(--space-md);
+      }
+      .project {
+        display: grid;
+        gap: var(--space-md);
+        padding: var(--space-lg);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius);
+        background: var(--color-surface);
+        transition:
+          border-color 0.2s ease,
+          transform 0.2s ease;
+      }
+      .project:hover {
+        transform: translateY(-3px);
+        border-color: var(--color-accent);
+      }
+      .project h3 {
+        font-size: 1.5rem;
+      }
+      .project-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        color: var(--color-accent);
+        font-size: 0.82rem;
+      }
+      .education {
+        display: grid;
+        gap: var(--space-md);
+      }
+      .education-card {
+        padding: var(--space-lg);
+        border-bottom: 1px solid var(--color-border);
+      }
+      .education-card:first-child {
+        border-top: 1px solid var(--color-border);
+      }
+      .education-card h3 {
+        margin-bottom: 0.35rem;
+        font-size: 1.25rem;
+        letter-spacing: -0.03em;
+      }
+      .education-card p {
+        color: var(--color-muted);
+      }
+      .contact-panel {
+        padding: var(--space-lg);
+        border: 1px solid var(--color-accent);
+        border-radius: var(--radius);
+        box-shadow: 0 0 32px rgba(111, 236, 184, 0.08);
+      }
+      .contact-panel p {
+        margin-bottom: var(--space-lg);
+        color: var(--color-muted);
+      }
+      .contact-links {
+        display: grid;
+        gap: var(--space-sm);
+        margin-top: var(--space-lg);
+      }
+      .contact-link {
+        display: flex;
+        align-items: center;
+        gap: var(--space-sm);
+        min-height: 44px;
+        color: var(--color-accent);
+        word-break: break-word;
+      }
+      .contact-link span {
+        color: var(--color-muted);
+      }
+      .contact-form {
+        display: grid;
+        gap: var(--space-md);
+      }
+      label {
+        display: grid;
+        gap: 0.4rem;
+        color: var(--color-muted);
+        font-size: 0.9rem;
+      }
+      input,
+      textarea {
+        width: 100%;
+        border: 1px solid var(--color-border);
+        border-radius: 0.65rem;
+        padding: 0.8rem;
+        background: var(--color-surface);
+        color: var(--color-text);
+      }
+      textarea {
+        min-height: 130px;
+        resize: vertical;
+      }
+      input:focus,
+      textarea:focus {
+        border-color: var(--color-accent);
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(111, 236, 184, 0.12);
+      }
+      .form-status {
+        min-height: 1.5rem;
+        color: var(--color-accent);
+        font-size: 0.9rem;
+      }
+      footer {
+        border-top: 1px solid var(--color-border);
+        padding-block: var(--space-lg);
+        color: var(--color-muted);
+        font-size: 0.82rem;
+      }
+      .footer-grid {
+        display: grid;
+        gap: var(--space-sm);
+      }
+      .footer-grid strong {
+        color: var(--color-text);
+        font-weight: 500;
+      }
+      .reveal {
+        opacity: 0;
+        transform: translateY(16px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: none;
+      }
+      @media (min-width: 700px) {
+        .nav {
+          display: flex;
+        }
+        .menu-button {
+          display: none;
+        }
+        .hero-grid {
+          grid-template-columns: 1.35fr 0.65fr;
+        }
+        .hero-mark {
+          min-height: 390px;
+        }
+        .about-grid,
+        .contact-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .projects {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .timeline-item {
+          grid-template-columns: 150px 1fr;
+        }
+        .footer-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+</style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="logo" href="#top" aria-label="Максим Бондаренко, на главную">МБ.</a>
+        <nav class="nav" aria-label="Основная навигация">
+          <a href="#about">Обо мне</a><a href="#experience">Опыт</a><a href="#projects">Проекты</a><a href="#contact">Контакты</a>
+        </nav>
+        <button           class="menu-button"
+          type="button"
+          aria-label="Открыть меню"
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+        >
+          <svg             viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
+            <path d="M4 7h16M4 12h16M4 17h16"></path>
+          </svg>
+        </button>
+      </div>
+      <nav id="mobile-nav" class="mobile-nav" aria-label="Мобильная навигация" hidden></nav>
+    </header>
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <p class="eyebrow">Портфолио · начинающий дизайнер</p>
+            <h1>Привет, я Максим <span>Бондаренко.</span></h1>
+            <p class="hero-copy">
+              Создаю понятные и выразительные визуальные решения. Развиваюсь в веб-дизайне,
+              айдентике, работе с изображениями и 3D.
+            </p>
+            <div class="hero-actions">
+              <a class="button" href="#contact">Связаться со мной</a><a class="button secondary" href="#projects">Проекты</a>
+            </div>
+          </div>
+          <div class="hero-mark" aria-label="Монограмма Максима Бондаренко">
+            <div class="mark-frame">МБ</div>
+          </div>
+        </div>
+      </section>
+      <section id="about" class="reveal">
+        <div class="container about-grid">
+          <div>
+            <p class="eyebrow">01 / Профиль</p>
+            <h2>Дизайн, который помогает понять главное.</h2>
+          </div>
+          <div class="about-copy">
+            <p>
+              Я начинающий дизайнер с вниманием к композиции, типографике и пользовательскому
+              сценарию. В учебных и личных проектах прохожу весь путь: от идеи и исследования до
+              аккуратной подачи результата.
+            </p>
+            <p>
+              Мне интересно работать на стыке визуальной системы и реальных задач бизнеса. Открыт к
+              новым задачам, особенно к созданию 3D-объектов и сцен.
+            </p>
+            <div class="availability">
+              <strong>Открыт к новым задачам</strong>Стажировка, junior-позиция, проектная работа и
+              создание 3D-объектов и сцен.
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="experience" class="reveal">
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">02 / Путь</p>
+              <h2>Опыт и развитие</h2>
+            </div>
+            <p class="section-intro">
+              Фокусируюсь на регулярной практике и превращаю учебные задания в проекты, которые
+              можно показать.
+            </p>
+          </div>
+          <div class="timeline">
+            <article class="timeline-item">
+              <div class="timeline-date">Сейчас</div>
+              <div>
+                <h3>Веб-дизайн в СПбГУПТД</h3>
+                <p>
+                  В данный момент учусь в СПбГУПТД по направлению «Веб-дизайн», развиваю навыки
+                  композиции, типографики, интерфейсов и адаптивной вёрстки.
+                </p>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <div class="timeline-date">Фриланс</div>
+              <div>
+                <h3>Практика через реальные задачи</h3>
+                <p>
+                  Беру заказы на фрилансе по редактированию фотографий, созданию айдентики,
+                  копирайтингу и разработке лендинг-сайтов.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section id="skills" class="reveal">
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">03 / Инструменты</p>
+              <h2>Навыки в работе</h2>
+            </div>
+          </div>
+          <ul class="skills">
+            <li class="skill">Photoshop</li>
+            <li class="skill">Illustrator</li>
+            <li class="skill">Figma</li>
+            <li class="skill">InDesign</li>
+            <li class="skill">After Effects</li>
+            <li class="skill">Premiere Pro</li>
+            <li class="skill">Animate</li>
+            <li class="skill">FontLab</li>
+            <li class="skill">Blender</li>
+            <li class="skill">Композиция</li>
+            <li class="skill">Типографика</li>
+            <li class="skill">Прототипирование</li>
+            <li class="skill">Айдентика</li>
+          </ul>
+        </div>
+      </section>
+      <section id="projects" class="reveal">
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">04 / Проекты</p>
+              <h2>Проекты, в которых я учусь</h2>
+            </div>
+            <p class="section-intro">
+              Концепции и практические задачи, созданные для развития собственного визуального
+              подхода.
+            </p>
+          </div>
+          <div class="projects">
+            <article class="project">
+              <span class="project-number">Проект 01</span>
+              <h3>Кофейня «Точка»</h3>
+              <p>
+                Концепция визуальной айдентики локальной кофейни: спокойная палитра, выразительная
+                типографика и система носителей для социальных сетей.
+              </p>
+              <div class="project-tags">
+                <span>Айдентика</span><span>•</span><span>Концепт</span>
+              </div>
+            </article>
+            <article class="project">
+              <span class="project-number">Проект 02</span>
+              <h3>Приложение для привычек</h3>
+              <p>
+                Учебный UX/UI-концепт с фокусом на простом ежедневном сценарии, ясной иерархии и
+                мягкой мотивации пользователя.
+              </p>
+              <div class="project-tags"><span>UX/UI</span><span>•</span><span>Прототип</span></div>
+            </article>
+            <article class="project">
+              <span class="project-number">Проект 03</span>
+              <h3>Разработка 3D-моделей и концепций для видеоигр</h3>
+              <p>
+                Создание объёмных объектов, сцен и визуальных концепций для игровых миров с
+                проработкой формы, атмосферы и художественного направления.
+              </p>
+              <div class="project-tags"><span>3D</span><span>•</span><span>Концепт-арт</span></div>
+            </article>
+            <article class="project">
+              <span class="project-number">Проект 04</span>
+              <h3>Айдентика для интернет-платформ и карточки товаров</h3>
+              <p>
+                Разработка визуальной айдентики для интернет-платформ, а также создание понятных и
+                привлекательных карточек товаров для маркетплейсов.
+              </p>
+              <div class="project-tags">
+                <span>Айдентика</span><span>•</span><span>Маркетплейсы</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section id="education" class="reveal">
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">05 / Образование</p>
+              <h2>Продолжаю учиться</h2>
+            </div>
+          </div>
+          <div class="education">
+            <article class="education-card">
+              <h3>СПбГУПТД · Веб-дизайн</h3>
+              <p>
+                Текущее обучение · веб-дизайн, адаптивная вёрстка, основы интерфейсов и визуальные
+                коммуникации.
+              </p>
+            </article>
+            <article class="education-card">
+              <h3>Самостоятельная практика</h3>
+              <p>
+                Изучаю принципы композиции, типографики, UX-мышления, 3D-моделирования и системного
+                подхода к визуальным задачам.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section id="contact" class="reveal">
+        <div class="container contact-grid">
+          <div>
+            <p class="eyebrow">06 / Контакты</p>
+            <h2>Давайте обсудим задачу</h2>
+            <p class="section-intro">
+              Если вам нужен начинающий дизайнер для команды, фриланс-задачи или небольшого проекта
+              — напишите мне. Также вы можете отдельно запросить у меня примеры выполненных работ в вашей сфере.
+            </p>
+            <div class="contact-links">
+              <a class="contact-link" href="mailto:maksimbbondareko@yandex.ru"
+                >✉ <span>maksimbbondareko@yandex.ru</span></a><a class="contact-link" href="tel:+79188802937">↗ <span>8 (918) 880 29 37</span></a>
+            </div>
+          </div>
+          <div class="contact-panel">
+            <form class="contact-form" action="#" novalidate>
+              <label for="name"
+                >Ваше имя<input                   id="name"
+                  name="name"
+                  type="text"
+                  placeholder="Как к вам обращаться"
+                  required ></label><label for="email"
+                >Email<input                   id="email"
+                  name="email"
+                  type="email"
+                  placeholder="you@example.com"
+                  required ></label><label for="message"
+                >Сообщение<textarea                   id="message"
+                  name="message"
+                  placeholder="Расскажите о задаче"
+                  required
+                ></textarea></label><button class="button" type="submit">Отправить сообщение</button>
+              <p class="form-status" aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="container footer-grid">
+        <p><strong>Максим Бондаренко</strong><br>Портфолио дизайнера</p>
+        <p><strong>Направление</strong><br>Веб-дизайн · айдентика · 3D</p>
+        <p><strong>Связь</strong><br>maksimbbondareko@yandex.ru</p>
+        <p><strong>Выполнение</strong><br>Нейросеть ChatGPT</strong><br>Время выполнения:2 часа</strong><br>JS функционал: Мобильное меню, обработка отправки формы, анимация появления блоков <br></p>
+
+      </div>
+    </footer>
+    <script>
+const menuButton = document.querySelector(".menu-button");
+      const mobileNav = document.querySelector("#mobile-nav");
+      const nav = document.querySelector(".nav");
+      if (menuButton && mobileNav && nav) {
+        mobileNav.innerHTML = nav.innerHTML;
+        menuButton.addEventListener("click", () => {
+          const open = menuButton.getAttribute("aria-expanded") === "true";
+          menuButton.setAttribute("aria-expanded", String(!open));
+          mobileNav.hidden = open;
+          menuButton.setAttribute("aria-label", open ? "Открыть меню" : "Закрыть меню");
+        });
+        mobileNav.querySelectorAll("a").forEach((link) =>
+          link.addEventListener("click", () => {
+            mobileNav.hidden = true;
+            menuButton.setAttribute("aria-expanded", "false");
+            menuButton.setAttribute("aria-label", "Открыть меню");
+          }),
+        );
+      }
+      const form = document.querySelector(".contact-form");
+      const status = document.querySelector(".form-status");
+      if (form && status)
+        form.addEventListener("submit", (event) => {
+          event.preventDefault();
+          if (!form.checkValidity()) {
+            status.textContent = "Пожалуйста, заполните все поля корректно.";
+            form.reportValidity();
+            return;
+          }
+          status.textContent = "Спасибо! Сообщение подготовлено — я свяжусь с вами.";
+          form.reset();
+        });
+      const items = document.querySelectorAll(".reveal");
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reduce || !("IntersectionObserver" in window))
+        items.forEach((item) => item.classList.add("visible"));
+      else {
+        const observer = new IntersectionObserver(
+          (entries) =>
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+              }
+            }),
+          { threshold: 0.12 },
+        );
+        items.forEach((item) => observer.observe(item));
+      }
+</script>
+  </body>
+</html>
